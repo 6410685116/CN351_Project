@@ -4,7 +4,7 @@
 $sever = 'mariadb';
 $username = 'root';
 $password = 'secret';
-$database = 'my_db';
+$database = 'registration';
 
 function db_connect($sever, $username, $password, $database)
 {

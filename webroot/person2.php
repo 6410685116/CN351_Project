@@ -44,9 +44,15 @@ elseif ( isset($_POST['delete'])){
     }
 }
 
-else if (isset($_POST["search"])){
-    $name = $_POST["name"] ?? '';
-    $surname = $_POST["surname"] ?? '';
+// else if (isset($_POST["search"])){
+//     $name = $_POST["name"] ?? '';
+//     $surname = $_POST["surname"] ?? '';
+//     $persons = search_data($name, $surname);
+//     require_once 'data.view.php';
+// }
+else if (isset($_GET["search"])){
+    $name = $_GET["name"] ?? '';
+    $surname = $_GET["surname"] ?? '';
     $persons = search_data($name, $surname);
     require_once 'data.view.php';
 }

@@ -7,7 +7,8 @@
     <title>Search Form</title>
 </head>
 <body>
-    <form action="person2.php" method="post">
+    <!-- <form action="person2.php" method="post"> -->
+    <form action="person2.php" method="get">
         <label for="name">Name: </label>
         <input type="text" name="name" id="name"><br>
         

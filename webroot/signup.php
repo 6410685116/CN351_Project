@@ -1,5 +1,35 @@
 <?php
-    require_once'config/db.php';
+
+    session_start();
+
+    include('config/db.php');
+
+    if (isset($_POST['signup'])) {
+        // $first_name = mysqli_real_escape_string($conn, $_POST['fistname']);
+        // $last_name = mysqli_real_escape_string($conn, $_POST['lastname']);
+        // $email = mysqli_real_escape_string($conn, $_POST['email']);
+        // $password = mysqli_real_escape_string($conn, $_POST['password']);
+        // $con_pass = mysqli_real_escape_string($conn, $_POST['confrimpassword']);
+        $first_name =  $_POST['fistname'];
+        $last_name = $_POST['lastname'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $con_pass =  $_POST['confrimpassword'];
+
+        $sql = "INSERT INTO users(firstname, lastname, email, password, userrole) VALUES('$first_name', '$last_name', '$email', '$password', 'user')";
+        if (mysqli_query($conn, $sql)) {
+            echo "Created account. Please login";
+            $msg = "";
+        }
+        else {
+            $msg = "";
+        }
+
+        // $name = htmlspecialchars($name);
+    
+    }
+    
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,30 +43,30 @@
     <div class="container">
         <h2 class="mt-4">Sign Up</h2>
         <hr>
-        <form>
+        <form method="post">
             <div class="mb-3">
-                <label for="fist_name" class="form-label">Fist name</label>
-                <input type="text" class="form-control" id="fist_name" aria-describedby="fist name">
+                <label for="fistname" class="form-label">Fist name</label>
+                <input type="text" class="form-control" name="fistname" aria-describedby="fistname">
             </div>
             <div class="mb-3">
-                <label for="last_name" class="form-label">Last name</label>
-                <input type="text" class="form-control" id="last_name" aria-describedby="last name">
+                <label for="lastname" class="form-label">Last name</label>
+                <input type="text" class="form-control" name="lastname"  aria-describedby="lastname">
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="email" aria-describedby="email">
-            </div>
+                <input type="email" class="form-control"  name="email"  aria-describedby="email">
+            </div> 
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" name="password">
+                <input type="password" class="form-control" name="password">
             </div>
             <div class="mb-3">
-                <label for="confrim password" class="form-label">Confrim password</label>
-                <input type="password" class="form-control" id="confrim password" name="confrim password">
+                <label for="confrimpassword" class="form-label">Confrim password</label>
+                <input type="password" class="form-control" id="confrimpassword" name="confrimpassword">
             </div>
             <button type="submit" name="signup" class="btn btn-primary">Submit</button>
         </form>
-        <a href="signin.php">signin</a>
+        <a href="/">signin</a>
     </div>
         
 </body>

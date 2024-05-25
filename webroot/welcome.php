@@ -1,10 +1,18 @@
 <?php 
 
     session_start();
+    include('config/db.php');
 
     if (!isset($_SESSION['userid'])) {
         header("location: index.php");
     } else {
+        if (isset($_SESSION['userid'])) {
+            $uid = $_SESSION['userid'];
+            $userQuery = "SELECT * FROM users WHERE id = '$uid'";
+            $userResult = mysqli_query($conn, $userQuery);
+
+            $data = mysqli_fetch_assoc($userResult);
+        }
 
 ?>
 
@@ -22,12 +30,15 @@
     
 
     <div class="container">
-        <h1 class="display-4 mt-4">Welcome, <?php echo $_SESSION['email']; ?></h1>
+        <h1 class="display-4 mt-4">Welcome, <?php echo $data['firstname'] . " " . $data['lastname']; ?></h1>
         <hr>
         <p>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque, voluptas voluptatum eos sint reiciendis exercitationem explicabo iusto neque voluptates veritatis, omnis consequatur? Asperiores facilis officia cum reprehenderit nulla alias dolore!
         </p>
         <a href="logout.php" class="btn btn-danger btn-sm">Logout</a>
+        <form action="person2.php" method="get">
+            <input type="hidden" name="name" value="1"> 
+        </form>
     </div>
 
 
