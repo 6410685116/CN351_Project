@@ -5,19 +5,20 @@
     include('config/db.php');
 
     if (isset($_POST['submit'])) {
-        $username = $_POST['username'];
+        $email = $_POST['email'];
         $password = $_POST['password'];
 
-        $sql = mysqli_query($dbcon, "SELECT * FROM tblusers WHERE username = '$username' AND  password = '$password'");
+        $sql = mysqli_query($conn, "SELECT * FROM users WHERE email ='$email' AND password ='$password'");
+
 
         $row = mysqli_fetch_array($sql);
 
         if ($row) {
             $_SESSION['userid'] = $row['id'];
-            $_SESSION['username'] = $row['username'];
+            $_SESSION['email'] = $row['email'];
 
             if (!empty($_POST['remember'])) {
-                setcookie('user_login', $_POST['username'], time() + (10 * 365 * 24 * 60 * 60));
+                setcookie('user_login', $_POST['email'], time() + (10 * 365 * 24 * 60 * 60));
                 setcookie('user_password', $_POST['password'], time() + (10 * 365 * 24 * 60 * 60));
             } else {
                 if (isset($_COOKIE['user_login'])) {
@@ -54,8 +55,8 @@
             </div>
             <?php } ?>
             <div class="mb-3">
-                <label for="username" class="form-label">Username</label>
-                <input type="text" class="form-control" value="<?php if (isset($_COOKIE['user_login'])) { echo $_COOKIE['user_login']; } ?>" name="username" id="username" aria-describedby="username">
+                <label for="email" class="form-label">Email</label>
+                <input type="text" class="form-control" value="<?php if (isset($_COOKIE['user_login'])) { echo $_COOKIE['user_login']; } ?>" name="email" id="email" aria-describedby="email">
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>

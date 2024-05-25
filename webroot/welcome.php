@@ -22,7 +22,7 @@
     
 
     <div class="container">
-        <h1 class="display-4 mt-4">Welcome, <?php echo $_SESSION['username']; ?></h1>
+        <h1 class="display-4 mt-4">Welcome, <?php echo $_SESSION['email']; ?></h1>
         <hr>
         <p>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque, voluptas voluptatum eos sint reiciendis exercitationem explicabo iusto neque voluptates veritatis, omnis consequatur? Asperiores facilis officia cum reprehenderit nulla alias dolore!
