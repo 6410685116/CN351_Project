@@ -42,7 +42,7 @@
         <!-- <form action="person2.php" method="get">
             <input type="hidden" name="name" value="1"> 
         </form> -->
-        <a href="password-view.php">change password</a>
+        <a href="change_password_form.php">change password</a>
     </div>
 
 

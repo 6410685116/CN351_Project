@@ -47,23 +47,23 @@
         <form method="post">
             <div class="mb-3">
                 <label for="fistname" class="form-label">Fist name</label>
-                <input type="text" class="form-control" name="fistname" aria-describedby="fistname">
+                <input type="text" class="form-control" name="fistname" aria-describedby="fistname" required>
             </div>
             <div class="mb-3">
                 <label for="lastname" class="form-label">Last name</label>
-                <input type="text" class="form-control" name="lastname"  aria-describedby="lastname">
+                <input type="text" class="form-control" name="lastname"  aria-describedby="lastname" required>
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label">Email address</label>
-                <input type="email" class="form-control"  name="email"  aria-describedby="email">
+                <input type="email" class="form-control"  name="email"  aria-describedby="email" required>
             </div> 
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" name="password">
+                <input type="password" class="form-control" name="password" required>
             </div>
             <div class="mb-3">
                 <label for="confrimpassword" class="form-label">Confrim password</label>
-                <input type="password" class="form-control" id="confrimpassword" name="confrimpassword">
+                <input type="password" class="form-control" id="confrimpassword" name="confrimpassword" required>
             </div>
             <button type="submit" name="signup" class="btn btn-primary">Submit</button>
         </form>
