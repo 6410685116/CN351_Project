@@ -36,9 +36,13 @@
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque, voluptas voluptatum eos sint reiciendis exercitationem explicabo iusto neque voluptates veritatis, omnis consequatur? Asperiores facilis officia cum reprehenderit nulla alias dolore!
         </p>
         <a href="logout.php" class="btn btn-danger btn-sm">Logout</a>
-        <form action="person2.php" method="get">
+        <?php if($data['userrole'] == 'admin'){ ?>
+            <a href="view_user.php">Check user</a>
+        <?php } ?>
+        <!-- <form action="person2.php" method="get">
             <input type="hidden" name="name" value="1"> 
-        </form>
+        </form> -->
+        <a href="password-view.php">change password</a>
     </div>
 
 
