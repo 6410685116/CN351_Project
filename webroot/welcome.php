@@ -37,12 +37,12 @@
         </p>
         <a href="logout.php" class="btn btn-danger btn-sm">Logout</a>
         <?php if($data['userrole'] == 'admin'){ ?>
-            <a href="view_user.php">Check user</a>
+            <a href="view_user.php" class="btn btn-primary">Check user</a>
         <?php } ?>
         <!-- <form action="person2.php" method="get">
             <input type="hidden" name="name" value="1"> 
         </form> -->
-        <a href="change_password_form.php">change password</a>
+        <a href="change_password_form.php" class="btn btn-warning">Change password</a>
     </div>
 
 

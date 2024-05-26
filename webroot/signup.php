@@ -10,7 +10,7 @@
         // $email = mysqli_real_escape_string($conn, $_POST['email']);
         // $password = mysqli_real_escape_string($conn, $_POST['password']);
         // $con_pass = mysqli_real_escape_string($conn, $_POST['confrimpassword']);
-        $first_name =  $_POST['fistname'];
+        $first_name =  $_POST['firstname'];
         $last_name = $_POST['lastname'];
         $email = $_POST['email'];
         $password = $_POST['password'];
@@ -46,8 +46,8 @@
         <hr>
         <form method="post">
             <div class="mb-3">
-                <label for="fistname" class="form-label">Fist name</label>
-                <input type="text" class="form-control" name="fistname" aria-describedby="fistname" required>
+                <label for="firstname" class="form-label">First name</label>
+                <input type="text" class="form-control" name="firstname" aria-describedby="firstname" required>
             </div>
             <div class="mb-3">
                 <label for="lastname" class="form-label">Last name</label>
@@ -65,9 +65,11 @@
                 <label for="confrimpassword" class="form-label">Confrim password</label>
                 <input type="password" class="form-control" id="confrimpassword" name="confrimpassword" required>
             </div>
-            <button type="submit" name="signup" class="btn btn-primary">Submit</button>
+            <button type="submit" name="signup" class="btn btn-success">Submit</button>
         </form>
-        <a href="/">signin</a>
+        <div style="margin-top: 10px;">
+            <a href="/" class="btn btn-primary">Sign In</a>
+        </div>
     </div>
         
 </body>
