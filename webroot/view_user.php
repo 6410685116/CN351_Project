@@ -38,23 +38,44 @@
             $link = db_connect($sever, $username, $password, $database);
             
             $id = $_POST['id'];
-            echo $id . "<br>";
+            // echo $id . "<br>";
 
-            $query = "select id, firstname, email from users where id = '" . $id . "'";// where id = " . $id;
+            $query = "select id, firstname, lastname, email from users where id = '" . $id . "'";// where id = " . $id;
             $sql = mysqli_query($link, $query);
-            if (mysqli_num_rows($sql) != 0) {
-                while ($row = mysqli_fetch_assoc($sql)) {
-                    echo $row['id'] . ", ";
-                    echo $row['firstname'] . ", ";
-                    echo $row['email'] . "<br>";
-                }
-            } else {
-                echo "0 result";
-            }
-            
+            // if (mysqli_num_rows($sql) != 0) {
+            //     while ($row = mysqli_fetch_assoc($sql)) {
+            //         echo $row['id'] . ", ";
+            //         echo $row['firstname'] . ", ";
+            //         echo $row['email'] . "<br>";
+            //     }
+            // } else {
+            //     echo "0 result";
+            // }
+    ?>
+    <div class="table-responsive mt-3">
+        <table class="table table-dark table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                </tr>
+                <?php while ($row = mysqli_fetch_assoc($sql)) {?>
+                    <tr>
+                        <td><?= $row['id']; ?></td>
+                        <td><?= $row['firstname'] . " " . $row['lastname']; ?></td>
+                        <td><?= $row['email']; ?></td>
+                    </tr>
+                <?php } ?>
+                </thead>
+        </table>
+    </div>
+    <?php
+
 
             $link->close();
         } 
     ?>
+    
 </body>
 </html>
