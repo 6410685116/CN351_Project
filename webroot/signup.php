@@ -15,16 +15,17 @@
         $email = $_POST['email'];
         $password = $_POST['password'];
         $con_pass =  $_POST['confrimpassword'];
-
-        $sql = "INSERT INTO users(firstname, lastname, email, password, userrole) VALUES('$first_name', '$last_name', '$email', '$password', 'user')";
-        if (mysqli_query($conn, $sql)) {
-            echo "Created account. Please login";
-            $msg = "";
+        if($password == $con_pass){
+            $sql = "INSERT INTO users(firstname, lastname, email, password, userrole) VALUES('$first_name', '$last_name', '$email', '$password', 'user')";
+            if (mysqli_query($conn, $sql)) {
+                echo "Created account. Please login";
+                $msg = "";
+            } else {
+                $msg = "";
+            }
+        } else {
+            echo "Password and confirm password do not match.";
         }
-        else {
-            $msg = "";
-        }
-
         // $name = htmlspecialchars($name);
     
     }

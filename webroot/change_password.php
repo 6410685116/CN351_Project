@@ -23,7 +23,8 @@ if (isset($_POST['submit'])) {
     $user_id = $_SESSION['userid'];
 
     // ดึงรหัสผ่านปัจจุบันจากฐานข้อมูล
-    // $stmt = mysqli_query($conn, "SELECT password FROM users WHERE id = '$user_id'");
+    $stmt = mysqli_query($conn, "SELECT password FROM users WHERE id = '$user_id'");
+    $var = mysqli_fetch_all($stmt);
     // // mysqli_stmt_bind_param($stmt, 's', $user_id);
     // // mysqli_stmt_execute($stmt);
     // // mysqli_stmt_bind_result($stmt, $hashed_password);
@@ -31,21 +32,29 @@ if (isset($_POST['submit'])) {
     // // mysqli_stmt_close($stmt);
 
     // // ตรวจสอบว่ารหัสผ่านปัจจุบันตรงกันหรือไม่
-    // if (!password_verify($current_password, $hashed_password)) {
-    //     die('Current password is incorrect.');
-    // }
+    if ($current_password != $var[0][0]) {
+        die('Current password is incorrect.');
+    }
 
     // แฮชรหัสผ่านใหม่
     // $new_password_hashed = password_hash($new_password, PASSWORD_DEFAULT);
 
     // อัปเดตรหัสผ่านใหม่ในฐานข้อมูล
-    $stmt = mysqli_prepare($conn, 'UPDATE users SET password = ? WHERE id = ?');
-    mysqli_stmt_bind_param($stmt, 'ss', $new_password, $user_id);
-    mysqli_stmt_execute($stmt);
-    mysqli_stmt_close($stmt);
+    
+    $stmt = mysqli_query($conn, "UPDATE users SET password = '$new_password' WHERE id = '$user_id' ");
+    // mysqli_stmt_bind_param($stmt, 'ss', $new_password, $user_id);
+    // mysqli_stmt_execute($stmt);
+    // mysqli_stmt_close($stmt);
+    if($stmt){
+        header('Location: welcome.php');
+    }
+    else{
+        echo "Error updating record: " . mysqli_error($conn);
+    }
 
-    echo 'Password changed successfully!';
 }
+
+
 
 // ปิดการเชื่อมต่อฐานข้อมูล
 mysqli_close($conn);
