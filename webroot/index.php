@@ -4,6 +4,11 @@
 
     include('config/db.php');
 
+    if (isset($_SESSION['userid'])) {
+    header("Location: welcome.php");
+    exit();
+}
+
     if (isset($_POST['submit'])) {
         $email = $_POST['email'];
         $password = $_POST['password'];
@@ -46,7 +51,7 @@
 </head>
 <body>
     <div class="container">
-        <h2>Sign in</h2>
+        <h2 class="mt-4">Sign In</h2>
         <hr>
         <form method="post">
             <?php if(isset($msg)) { ?>
@@ -66,9 +71,12 @@
                 <input type="checkbox" name="remember" <?php if (isset($_COOKIE['user_login'])) { ?> checked <?php } ?> class="form-check-input" id="remember">
                 <label class="form-check-label" for="remember">Remember Me</label>
             </div>
-            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" name="submit" class="btn btn-success">Submit</button>
         </form>
-        <a href="signup.php">signup</a>
+        <div style="margin-top: 10px;">
+            <a href="signup.php" class="btn btn-primary">Sign Up</a>
+        </div>
+        
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
