@@ -21,15 +21,15 @@ services:
 
   mariadb:
     image: mariadb:10.11
-    # volumes:
-    #   #- ./db_mariadb:/var/lib/mysql
-    #   - ./init_mariadb:/docker-entrypoint-initdb.d/:ro
+    volumes:
+      #- ./db_mariadb:/var/lib/mysql
+      - ./init_mariadb:/docker-entrypoint-initdb.d/:rw
     ports:
       - "3306:3306"
     restart: always
     environment:
       - MYSQL_ROOT_PASSWORD=secret
-      # - MYSQL_DATABASE=db_test
+      - MYSQL_DATABASE=registration
       - MYSQL_USER=db_user
       - MYSQL_PASSWORD=db_pw
       - TZ=Asia/Bangkok

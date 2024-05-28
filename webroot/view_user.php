@@ -38,19 +38,9 @@
             $link = db_connect($sever, $username, $password, $database);
             
             $id = $_POST['id'];
-            // echo $id . "<br>";
 
             $query = "select id, firstname, lastname, email from users where id = '" . $id . "'";// where id = " . $id;
-            $sql = mysqli_query($link, $query);
-            // if (mysqli_num_rows($sql) != 0) {
-            //     while ($row = mysqli_fetch_assoc($sql)) {
-            //         echo $row['id'] . ", ";
-            //         echo $row['firstname'] . ", ";
-            //         echo $row['email'] . "<br>";
-            //     }
-            // } else {
-            //     echo "0 result";
-            // }
+
     ?>
     <div class="table-responsive mt-3">
         <table class="table table-dark table-bordered">
