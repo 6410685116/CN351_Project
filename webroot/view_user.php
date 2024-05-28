@@ -17,8 +17,9 @@
             <input type="text" name="id" id="id" required>
         </div>
         <input type="hidden" name="idCheck" value="1">
-        <input type="submit" class="btn btn-primary">
+        <input type="submit" class="btn btn-success">
         <input type="reset" class="btn btn-warning">
+        <a href="/welcome.php" class="btn btn-primary">Home</a>
     </form>
     <?php 
         if ( isset($_POST['idCheck'])){
@@ -40,6 +41,7 @@
             $id = $_POST['id'];
 
             $query = "select id, firstname, lastname, email from users where id = '" . $id . "'";// where id = " . $id;
+            $sql = mysqli_query($link, $query);
 
     ?>
     <div class="table-responsive mt-3">
